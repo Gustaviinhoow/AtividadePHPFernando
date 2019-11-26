@@ -25,7 +25,7 @@ public class InserirActivity extends AppCompatActivity implements  IDadosEventLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inserir);
         this.inserirController = new InserirController(this);
-        this.etNome = findViewById(R.id.et_sobrenome);
+        this.etNome = findViewById(R.id.et_nome);
         this.etSobrenome = findViewById(R.id.et_sobrenome);
         this.etCpf = findViewById(R.id.et_cpf);
     }
