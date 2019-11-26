@@ -32,13 +32,12 @@ else if($comando == 'inserir'){
 			//echo($_POST["nome"]);
 	$cpf = verificaValorPost('cpf');
 	$nome = verificaValorPost('nome');
-	$endereco = verificaValorPost('endereco');
-	$telefone = verificaValorPost('telefone');
+	$sobrenome = verificaValorPost('sobrenome');
 	$data = [
-		[$cpf, $nome, $endereco, $telefone]
+		[$cpf, $nome, $sobrenome]
 	];
 	$sql = "INSERT INTO cliente
-		(cpf,nome,endereco,telefone) VALUES (?,?,?,?)";
+		(cpf,nome,sobrenome) VALUES (?,?,?)";
 	$stmt= $pdo->prepare($sql);
 	try {
 		$pdo->beginTransaction();
@@ -78,9 +77,9 @@ if ($comando == 'buscarCpf' || $isDebug) {
 		$linha = mysqli_fetch_array($resultado);
 		$registros = array();
 		//extraindo os dados do bd
-		$linha2 = array(
-			'nome'=>$linha['nome'], 
+		$linha2 = array(			
 			'cpf'=>$linha['cpf'],
+			'nome'=>$linha['nome'], 
 			'sobrenome' =>$linha['sobrenome']);
 		array_push($registros, $linha2);
 		array_push($jsonArray, array('registros'=>$registros));
@@ -94,8 +93,8 @@ elseif ($comando == 'buscarNome' || $isDebug) {
 		$registros = array();
 		while($linha = mysqli_fetch_array($resultado)){
 			$linha2 = array(
-				'nome'=>$linha['nome'], 
 				'cpf'=>$linha['cpf'],
+				'nome'=>$linha['nome'], 
 				'sobrenome' =>$linha['sobrenome']);
 			array_push($registros, $linha2);
 		}
@@ -121,7 +120,7 @@ if($operacao == "Inserir"){
 }elseif($operacao == "Alterar"){
 	$resultado = mysqli_query($conexao, 
 		"UPDATE clientes 
-		SET nome=\"$nome\", sexo=\"$sobrenome\"
+		SET nome=\"$nome\", sobrenome=\"$sobrenome\"
 		WHERE cpf=\"$cpf\"; ");
 	if($resultado){
 		echo("<br>Dados atualizados com sucesso!");

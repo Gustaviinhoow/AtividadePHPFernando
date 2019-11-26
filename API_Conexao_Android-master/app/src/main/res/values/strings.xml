@@ -32,6 +32,6 @@
 
     <string name="tb_cpf">CPF</string>
     <string name="tb_nome">Nome</string>
-    <string name="tb_sobrenome">Endereço</string>
+    <string name="tb_sobrenome">Sobrenome</string>
 
 </resources>
